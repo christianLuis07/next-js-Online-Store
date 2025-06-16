@@ -7,6 +7,7 @@ import { headerData } from "@/constants/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SocialMedia from "./SocialMedia";
+import { useOutsideClick } from "@/hooks";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -14,6 +15,7 @@ interface SidebarProps {
 
 const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
+  const sidebarRef = useOutsideClick<HTMLDivElement>(onClose);
   return (
     <div
       className={`fixed inset-y-0 h-screen left-0 z-50 w-full
@@ -22,6 +24,7 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
          } hoverEffect`}
     >
       <div
+        ref={sidebarRef}
         className="min-w-72 max-w-96 bg-black h-screen p-10 border-r 
       border-r-shop_light_green flex flex-col gap-6"
       >

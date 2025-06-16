@@ -1,7 +1,12 @@
 import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
 import { title } from "process";
 import React from "react";
-import { Tooltip, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +44,7 @@ const SocialMedia = ({ className, iconClassName, tooltipClassName }: Props) => {
     <TooltipProvider>
       <div className={cn("flex items-center gap-3.5", className)}>
         {socialLink.map((item) => (
-          <Tooltip>
+          <Tooltip key={item?.title}>
             <TooltipTrigger asChild>
               <Link
                 key={item?.title}
@@ -54,6 +59,14 @@ const SocialMedia = ({ className, iconClassName, tooltipClassName }: Props) => {
                 {item?.icon}
               </Link>
             </TooltipTrigger>
+            <TooltipContent
+              className={cn(
+                "bg-white text-darkColor font-semibold",
+                tooltipClassName
+              )}
+            >
+              {item?.title}
+            </TooltipContent>
           </Tooltip>
         ))}
       </div>
