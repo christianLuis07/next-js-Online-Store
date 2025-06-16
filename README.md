@@ -1,6 +1,8 @@
-Ini adalah Toko Online yang dibuat dengan NEXT JS
+# 🛒 Next.js Online Store
 
-sampai saat ini tahap pengembangan masih pada bagian header section
+Ini adalah toko online yang dibangun menggunakan **Next.js**.
+
+🚧 **Saat ini proyek masih dalam tahap pengembangan, fokus pada bagian _Header Section_.**
 
 berikut preview singkat <br />
 ## Desktop
@@ -11,6 +13,13 @@ berikut preview singkat <br />
 
 ## Mobile (Compact)
 ![Mobile Preview - 3](./preview/1.png)
+
+
+## 🚀 Teknologi yang Digunakan
+- **Next.js** + **TypeScript**
+- **Tailwind CSS**
+- **Shadcn/UI**
+- **React Icons**
 
 ## Getting Started
 
