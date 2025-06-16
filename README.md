@@ -10,7 +10,7 @@ berikut preview singkat <br />
 ![Mobile Preview - 2](./preview/3.png)
 
 ## Mobile (Compact)
-![Mobile Preview - 3](./preview/2.png)
+![Mobile Preview - 3](./preview/1.png)
 
 ## Getting Started
 
