@@ -2,16 +2,13 @@
 
 Ini adalah toko online yang dibangun menggunakan **Next.js**.
 
-🚧 **Saat ini proyek masih dalam tahap pengembangan, fokus pada bagian _Home Banner Section_.**
+🚧 **Saat ini proyek masih dalam tahap pengembangan, fokus pada bagian _Home Banner dan Footer Section_.**
 
 berikut preview singkat <br />
 ## Desktop
 ![Desktop Preview](./preview/2.png)
 
-## Mobile (Tablet)
-![Mobile Preview - 2](./preview/3.png)
-
-## Mobile (Compact)
+## Mobile
 ![Mobile Preview - 3](./preview/1.png)
 
 
