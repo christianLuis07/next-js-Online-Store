@@ -8,10 +8,7 @@ berikut preview singkat <br />
 ## Desktop
 ![Desktop Preview](./preview/2.png)
 
-## Mobile (Tablet)
-![Mobile Preview - 2](./preview/3.png)
-
-## Mobile (Compact)
+## Mobile
 ![Mobile Preview - 3](./preview/1.png)
 
 
