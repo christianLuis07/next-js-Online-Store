@@ -33,6 +33,13 @@ export const addressType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "state",
+      title: "State",
+      type: "string",
+      description: "Dua karakter (c.t.h: SU, JK)",
+      validation: (Rule) => Rule.required().length(2).uppercase(),
+    }),
+    defineField({
       name: "zip",
       title: "Kode Pos",
       type: "string",
