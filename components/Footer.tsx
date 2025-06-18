@@ -61,8 +61,8 @@ const Footer = () => {
           <div className="space-y-4">
             <SubTitle>NewsLetter</SubTitle>
             <SubText>
-              Subscribe to our newsletter to receive updates and exclusive
-              offers
+              Berlanggananlah newsletter kami untuk menerima pembaruan dan
+              penawaran eksklusif.
             </SubText>
             <form className="space-y-3">
               <Input placeholder="Enter your email" type="email" required />
