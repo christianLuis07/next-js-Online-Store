@@ -34,7 +34,7 @@ const NoProductAvailable = ({
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-gray-600"
       >
-        Kami&apos;re maaf, tapi tidak ada produk yang sesuai dengan kategori{" "}
+        Kami&apos;minta maaf, tapi tidak ada produk yang sesuai dengan kategori{" "}
         <span className="text-base font-semibold text-darkColor">
           {selectedTab}
         </span>{" "}
@@ -46,7 +46,7 @@ const NoProductAvailable = ({
         className="flex items-center space-x-2 text-shop_dark_green"
       >
         <Loader2 className="w-5 h-5 animate-spin" />
-        <span>Kami&apos;re sedang melakukan restock</span>
+        <span>Kami&apos; sedang melakukan restock</span>
       </motion.div>
       <motion.p
         initial={{ opacity: 0 }}
