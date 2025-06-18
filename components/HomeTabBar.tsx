@@ -27,7 +27,13 @@ const HomeTabBar = ({ selectedTab, onTabSelect }: Props) => {
           </button>
         ))}
       </div>
-      <Link href={"/shop"}>See all</Link>
+      <Link
+        href={"/shop"}
+        className="border border-shop_light_green/20 px-4 py-1.5 md:px-6 md:py-2 
+        rounded-full hover:bg-shop_light_green hover:text-white hoverEffect"
+      >
+        Lihat Semua
+      </Link>
     </div>
   );
 };
