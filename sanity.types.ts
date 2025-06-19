@@ -66,13 +66,7 @@ export type Blog = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  blogcategories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "blogCategory";
-  }>;
+  blogcategories?: BlogCategory[];
   publishedAt?: string;
   isLatest?: boolean;
   body?: Array<
