@@ -30,7 +30,15 @@ npm install
 # or
 yarn install
 ```
-3. menjalankan project 
+3.env setup
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=YOUR_API_KEY
+CLERK_SECRET_KEY=YOUR_API_KEY
+NEXT_PUBLIC_SANITY_PROJECT_ID=YOUR_API_KEY
+NEXT_PUBLIC_SANITY_DATASET=YOUR_API_KEY
+SANITY_API_READ_TOKEN=YOUR_API_KEY
+```
+4. menjalankan project 
 ```bash
 npm run dev
 # or
