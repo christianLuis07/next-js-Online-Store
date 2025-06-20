@@ -47,12 +47,6 @@ export const productType = defineType({
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
-      name: "discount",
-      title: "Diskon",
-      type: "number",
-      validation: (Rule) => Rule.required().min(0),
-    }),
-    defineField({
       name: "categories",
       title: "Kategori",
       type: "array",
