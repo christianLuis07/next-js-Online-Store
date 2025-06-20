@@ -71,10 +71,25 @@ const getProductBySlug = async (slug: string) => {
   }
 };
 
+const getBrand = async (slug: string) => {
+  try {
+    const product = await sanityFetch({
+      query: BRANDS_QUERY,
+      params: {
+        slug,
+      },
+    });
+  } catch (error: any) {
+    console.error("Failed to fetch categories:", error);
+    throw new Error(`Failed to fetch categories: ${error.message}`);
+  }
+};
+
 export {
   getCategories,
   getAllBrands,
   getLatestBlogs,
   getDealProducts,
   getProductBySlug,
+  getBrand,
 };
