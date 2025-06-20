@@ -71,4 +71,10 @@ const getProductBySlug = async (slug: string) => {
   }
 };
 
-export { getCategories, getAllBrands, getLatestBlogs, getDealProducts };
+export {
+  getCategories,
+  getAllBrands,
+  getLatestBlogs,
+  getDealProducts,
+  getProductBySlug,
+};
