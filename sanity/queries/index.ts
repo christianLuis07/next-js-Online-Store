@@ -4,6 +4,7 @@ import {
   DEAL_PRODUCTS,
   LATEST_BLOG_QUERY,
   PRODUCT_BY_SLUG_QUERY,
+  BRAND_QUERY,
 } from "./query";
 
 const getCategories = async (quantity?: number) => {
@@ -74,11 +75,12 @@ const getProductBySlug = async (slug: string) => {
 const getBrand = async (slug: string) => {
   try {
     const product = await sanityFetch({
-      query: BRANDS_QUERY,
+      query: BRAND_QUERY,
       params: {
         slug,
       },
     });
+    return product?.data || null;
   } catch (error: any) {
     console.error("Failed to fetch categories:", error);
     throw new Error(`Failed to fetch categories: ${error.message}`);
