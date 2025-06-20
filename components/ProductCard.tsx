@@ -1,55 +1,41 @@
 import { Product } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
-import { Flame, StarIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import AddToWishlistButton from "./AddToWishlistButton";
-import { Title } from "./ui/text";
+import Link from "next/link";
+import { StarIcon } from "@sanity/icons";
+import { Flame } from "lucide-react";
 import PriceView from "./PriceView";
+import { Title } from "./ui/text";
+import ProductSideMenu from "./ProductSideMenu";
 import AddToCartButton from "./AddToCartButton";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="text-sm border-[1px] border-dark_blue/20 rounded-md bg-white group">
+    <div className="text-sm border-[1px] rounded-md border-darkBlue/20 group bg-white">
       <div className="relative group overflow-hidden bg-shop_light_bg">
         {product?.images && (
-          <Image
-            src={urlFor(product?.images[0]).url()}
-            alt="ProductImage"
-            loading="lazy"
-            width={700}
-            height={700}
-            className={`w-full h-64 object-contain overflow-hidden transition-transform
-              bg-shop_light_bg hoverEffect
-               ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
-          />
+          <Link href={`/product/${product?.slug?.current}`}>
+            <Image
+              src={urlFor(product.images[0]).url()}
+              alt="productImage"
+              width={500}
+              height={500}
+              priority
+              className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg duration-500 
+              ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
+            />
+          </Link>
         )}
-        <AddToWishlistButton product={product} />
-        {product?.status === "sale" && (
-          <p
-            className="absolute top-2 left-2 z-10 text-xs border
-           border-darkColor/50 px-2 rounded-full group-hover:border-shop_light_green 
-           group-hover:text-shop_light_green hoverEffect"
-          >
-            Beli!
+        <ProductSideMenu product={product} />
+        {product?.status === "sale" ? (
+          <p className="absolute top-2 left-2 z-10 text-xs border border-darkColor/50 px-2 rounded-full group-hover:border-lightGreen hover:text-shop_dark_green hoverEffect">
+            Sale!
           </p>
-        )}
-        {product?.status === "new" && (
-          <p
-            className="absolute top-2 left-2 z-10 text-xs border
-           border-darkColor/50 px-2 rounded-full group-hover:border-shop_light_green 
-           group-hover:text-shop_light_green hoverEffect"
-          >
-            baru!
-          </p>
-        )}
-        {product?.status === "hot" && (
+        ) : (
           <Link
             href={"/deal"}
-            className="absolute top-2 left-2 z-10 border border-shop_orange/50 p-1 
-          rounded-full group-hover:border-shop_orange hover:text-shop_dark_green 
-          hoverEffect"
+            className="absolute top-2 left-2 z-10 border border-shop_orange/50 p-1 rounded-full group-hover:border-shop_orange hover:text-shop_dark_green hoverEffect"
           >
             <Flame
               size={18}
@@ -59,40 +45,37 @@ const ProductCard = ({ product }: { product: Product }) => {
           </Link>
         )}
       </div>
-      <div className="p-3 flex flex-col">
+      <div className="p-3 flex flex-col gap-2">
         {product?.categories && (
-          <p className="uppercase truncate text-xs text-shop_light_text">
-            {product.categories?.map((cat) => cat).join(", ")}
+          <p className="uppercase line-clamp-1 text-xs font-medium text-lightText">
+            {product.categories.map((cat) => cat).join(", ")}
           </p>
         )}
-        <Title className="text-sm truncate">{product?.name}</Title>
+        <Title className="text-sm line-clamp-1">{product?.name}</Title>
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-0.5">
+          <div className="flex items-center">
             {[...Array(5)].map((_, index) => (
               <StarIcon
-                size={12}
                 key={index}
                 className={
-                  index < 4
-                    ? "text-shop_lighter_green"
-                    : "text-shop_lighter_text"
+                  index < 4 ? "text-shop_light_green" : " text-lightText"
                 }
                 fill={index < 4 ? "#93D991" : "#ababab"}
               />
             ))}
           </div>
-          <div className="text-shop_light_text text-sm tracking-wide">
-            5 Reviews
-          </div>
+          <p className="text-lightText text-xs tracking-wide">5 Reviews</p>
         </div>
+
         <div className="flex items-center gap-2.5">
-          <p className="font-medium">Stok</p>
+          <p className="font-medium">In Stock</p>
           <p
-            className={`${product?.stock === 0 ? "text-red-600" : "text-shop_light_green font-semibold"}`}
+            className={`${product?.stock === 0 ? "text-red-600" : "text-shop_dark_green/80 font-semibold"}`}
           >
-            {(product?.stock as number) > 0 ? product?.stock : "Habis"}
+            {(product?.stock as number) > 0 ? product?.stock : "unavailable"}
           </p>
         </div>
+
         <PriceView
           price={product?.price}
           discount={product?.discount}
