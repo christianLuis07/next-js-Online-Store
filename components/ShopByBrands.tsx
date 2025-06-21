@@ -38,7 +38,7 @@ const ShopByBrands = async () => {
         <Title>Cari Berdasarkan Merek</Title>
         <Link
           href={"/shop"}
-          className="text-sm font-semibold tracking-wide hover:text-shop_btn_dark_green hoverEffect"
+          className="text-sm font-semibold tracking-wide hover:text-shop_btn_dark_green hoverEffect "
         >
           Lihat Semua
         </Link>
