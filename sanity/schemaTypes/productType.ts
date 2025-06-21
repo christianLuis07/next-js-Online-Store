@@ -89,6 +89,7 @@ export const productType = defineType({
         ],
       },
     }),
+
     defineField({
       name: "isFeatured",
       title: "Produk Unggulan",
