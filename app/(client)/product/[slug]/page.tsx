@@ -54,6 +54,7 @@ const SingleProductPage = async ({
           >
             Stok: {(product?.stock as number) > 0 ? "Tersedia" : "Habis"}
           </p>
+          
         </div>
         <div className="flex items-center gap-2.5 lg:gap-5">
           <AddToCartButton product={product} />
