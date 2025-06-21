@@ -22,7 +22,7 @@ const NotFoundPage = () => {
               className="w-full flex items-center 
               justify-center px-4 py-2 border-transparent text-sm 
               font-semibold rounded-md text-white bg-shop_dark_green/80 hover:bg-shop_dark_green
-              focus:outline-none focus:ring-offset-2 focus:ring-amazonOrangeDark hoverEffect"
+              focus:outline-none focus:ring-offset-2 focus:ring-amazonOrangeDark hoverEffect "
             >
               Kembali ke Home
             </Link>
