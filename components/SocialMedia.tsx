@@ -52,7 +52,7 @@ const SocialMedia = ({ className, iconClassName, tooltipClassName }: Props) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "p-2 border rounded-full hover:text-white hover:border-shop_light_green",
+                  "p-2 border rounded-full hover:text-white hover:border-shop_light_green ",
                   iconClassName
                 )}
               >
