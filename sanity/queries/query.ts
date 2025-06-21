@@ -24,7 +24,7 @@ const PRODUCT_BY_SLUG_QUERY = defineQuery(
 const BRAND_QUERY =
   defineQuery(`*[_type == "product" && slug.current == $slug] {
   "brandName" : brand->title
-  }`);
+  } `);
 
 export {
   BRANDS_QUERY,
