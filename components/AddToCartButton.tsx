@@ -14,7 +14,7 @@ interface Props {
 const AddToCartButton = ({ product, className }: Props) => {
   const isOutOfStock = product?.stock === 0;
   const handleAddToCart = () => {
-    window.alert("Produk berhasil ditambahkan ke keranjang");
+    window.alert("Produk berhasil ditambahkan ke keranjang ");
   };
   return (
     <div>
