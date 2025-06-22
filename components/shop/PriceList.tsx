@@ -8,7 +8,7 @@ const priceArray = [
   { title: "Rp100.000 - Rp200.000", value: "100000-200000" },
   { title: "Rp200.000 - Rp300.000", value: "200000-300000" },
   { title: "Rp300.000 - Rp500.000", value: "300000-500000" },
-  { title: "Di atas Rp500.000", value: "500000-10000000" },
+  { title: "Di atas Rp500.000", value: "500000-100000000" },
 ];
 
 interface Props {
