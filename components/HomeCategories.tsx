@@ -20,7 +20,12 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
                 className="overflow-hidden border border-shop_orange/30
                hover:border-shop_orange hoverEffect w-20 h-20 p-1"
               >
-                <Link href={`/category/${category?.slug?.current}`}>
+                <Link
+                  href={{
+                    pathname: "/shop",
+                    query: { categories: category?.slug?.current },
+                  }}
+                >
                   <Image
                     src={urlFor(category?.image).url()}
                     alt="categoryImage"
