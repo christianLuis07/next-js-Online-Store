@@ -5,6 +5,7 @@ import ImageView from "@/components/ImageView";
 import PriceView from "@/components/PriceView";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
 import { getProductBySlug } from "@/sanity/queries";
+import { notFound } from "next/navigation";
 import { CornerDownLeft, StarIcon, Truck } from "lucide-react";
 import React from "react";
 import { FaRegQuestionCircle } from "react-icons/fa";
@@ -19,6 +20,10 @@ const SingleProductPage = async ({
 }) => {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
+
+  if (!product) {
+    return notFound();
+  }
 
   return (
     <Container className="flex flex-col md:flex-row gap-10 py-10">
@@ -54,7 +59,6 @@ const SingleProductPage = async ({
           >
             Stok: {(product?.stock as number) > 0 ? "Tersedia" : "Habis"}
           </p>
-          
         </div>
         <div className="flex items-center gap-2.5 lg:gap-5">
           <AddToCartButton product={product} />
