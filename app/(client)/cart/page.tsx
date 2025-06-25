@@ -29,6 +29,7 @@ import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { set } from "sanity";
+import React from "react";
 
 const CartPage = () => {
   const {
@@ -49,7 +50,7 @@ const CartPage = () => {
   const fetchAdresses = async () => {
     setLoading(true);
     try {
-      const query = `*[_type == "address] | order(publishedAt desc)`;
+      const query = `*[_type == "address"] | order(publishedAt desc)`;
       const data = await client.fetch(query);
       setAddresses(data);
       const defaultAddress = data.find((addr: Address) => addr.default);
@@ -88,7 +89,7 @@ const CartPage = () => {
             <>
               <div className="flex items-center gap-2 py-5">
                 <ShoppingBag className="text-darkColor" />
-                <Title>Shopping Cart</Title>
+                <Title>CShop</Title>
               </div>
               <div className="grid lg:grid-cols-3 md:gap-8">
                 <div className="lg:col-span-2 rounded-lg">
@@ -145,7 +146,7 @@ const CartPage = () => {
                                       />
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold">
-                                      Add to Favorite
+                                      tambahkan ke favorit
                                     </TooltipContent>
                                   </Tooltip>
                                   <Tooltip>
@@ -161,7 +162,7 @@ const CartPage = () => {
                                       />
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold bg-red-600">
-                                      Delete product
+                                      hapus produk
                                     </TooltipContent>
                                   </Tooltip>
                                 </TooltipProvider>
@@ -183,7 +184,7 @@ const CartPage = () => {
                       className="m-5 font-semibold"
                       variant="destructive"
                     >
-                      Reset Cart
+                      Reset Keranjang
                     </Button>
                   </div>
                 </div>
@@ -191,7 +192,7 @@ const CartPage = () => {
                   <div className="lg:col-span-1">
                     <div className="hidden md:inline-block w-full bg-white p-6 rounded-lg border">
                       <h2 className="text-xl font-semibold mb-4">
-                        Order Summary
+                        Ringkasan Pemesanan
                       </h2>
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
@@ -199,7 +200,7 @@ const CartPage = () => {
                           <PriceFormattor amount={getSubTotalPrice()} />
                         </div>
                         <div className="flex items-center justify-between">
-                          <span>Discount</span>
+                          <span>Diskon</span>
                           <PriceFormattor
                             amount={getSubTotalPrice() - getTotalPrice()}
                           />
@@ -216,7 +217,7 @@ const CartPage = () => {
                           className="w-full rounded-full font-semibold tracking-wide hoverEffect"
                           size="lg"
                         >
-                          {loading ? "Please wait..." : "Proceed to Checkout"}
+                          {loading ? "Loading..." : "Checkout"}
                         </Button>
                       </div>
                     </div>
@@ -224,7 +225,7 @@ const CartPage = () => {
                       <div className="bg-white rounded-md mt-5">
                         <Card>
                           <CardHeader>
-                            <CardTitle>Delivery Address</CardTitle>
+                            <CardTitle>Alamat Pengiriman</CardTitle>
                           </CardHeader>
                           <CardContent>
                             <RadioGroup
@@ -257,7 +258,7 @@ const CartPage = () => {
                               ))}
                             </RadioGroup>
                             <Button variant="outline" className="w-full mt-4">
-                              Add New Address
+                              tambah alamat baru
                             </Button>
                           </CardContent>
                         </Card>
@@ -268,7 +269,7 @@ const CartPage = () => {
                 {/* Order summary for mobile view */}
                 <div className="md:hidden fixed bottom-0 left-0 w-full bg-white pt-2">
                   <div className="bg-white p-4 rounded-lg border mx-4">
-                    <h2>Order Summary</h2>
+                    <h2>Ringkasan Pesanan</h2>
                   </div>
                 </div>
               </div>
@@ -283,3 +284,5 @@ const CartPage = () => {
     </div>
   );
 };
+
+export default CartPage;
