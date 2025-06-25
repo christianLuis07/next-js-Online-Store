@@ -1,6 +1,6 @@
 # 🛒 Next.js Online Store
 
-Ini adalah toko online yang dibangun menggunakan **Next.js**.
+Ini adalah toko online yang dibangun menggunakan **Next.js App Router**.
 
 🚧 **Saat ini proyek masih dalam tahap pengembangan, fokus pada bagian _Keranjang dan Wishlist_.**
 
