@@ -2,7 +2,7 @@
 
 Ini adalah toko online yang dibangun menggunakan **Next.js**.
 
-🚧 **Saat ini proyek masih dalam tahap pengembangan, fokus pada bagian _Fetching Data dari backend_.**
+🚧 **Saat ini proyek masih dalam tahap pengembangan, fokus pada bagian _Keranjang dan Wishlist_.**
 
 berikut preview singkat <br />
 ## Desktop
