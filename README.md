@@ -12,11 +12,12 @@ berikut preview singkat <br />
 ![Mobile Preview - 3](./preview/1.png)
 
 
-## 🚀 Teknologi yang Digunakan
+## 🚀 Tech stack yang Digunakan
 - **Next.js** + **TypeScript**
 - **Tailwind CSS**
 - **Shadcn/UI**
 - **React Icons**
+- **Sanity**
 
 ## Getting Started
 
