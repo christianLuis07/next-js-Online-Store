@@ -635,6 +635,21 @@ export type BRAND_QUERYResult = Array<{
   brandName: string | null;
 }>;
 
+// export type MY_ORDERS_QUERYResult = Array<{
+//   _id: string;
+//   _type: "order";
+//   _createdAt: string;
+//   _updatedAt: string;
+//   _rev: string;
+//   orderNumber: string;
+//   invoice?: {
+//     id?: string;
+//     number?: string;
+//     hosted_invoice_url?: string;
+//   };
+//   stripe;
+// }>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
