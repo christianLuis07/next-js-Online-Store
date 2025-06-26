@@ -21,7 +21,7 @@ interface OrderDetailsDialogProps {
   onClose: () => void;
 }
 
-const OrderDetailBlog: React.FC<OrderDetailsDialogProps> = ({
+const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
   order,
   isOpen,
   onClose,
@@ -136,4 +136,4 @@ const OrderDetailBlog: React.FC<OrderDetailsDialogProps> = ({
   );
 };
 
-export default OrderDetailBlog;
+export default OrderDetailDialog;
