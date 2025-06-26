@@ -44,7 +44,7 @@ const CartPage = () => {
   const groupedItems = useStore((state) => state.getGroupedItems());
   const { isSignedIn } = useAuth();
   const { user } = useUser();
-  const [addresses, setAddresses] = useState<Address[]>([]);
+  const [addresses, setAddresses] = useState<Address[] | null>([]);
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
   const fetchAdresses = async () => {
