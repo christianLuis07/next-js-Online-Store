@@ -1,3 +1,4 @@
+import { SINGLE_BLOG_QUERYResult } from "@/sanity.types";
 import { sanityFetch } from "../lib/live";
 import {
   BLOG_CATEGORIES,
@@ -117,18 +118,21 @@ const getAllBlogs = async (quantity: number) => {
   }
 };
 
-const getSingleBlog = async (slug: string) => {
+const getSingleBlog = async (
+  slug: string
+): Promise<SINGLE_BLOG_QUERYResult> => {
   try {
     const { data } = await sanityFetch({
       query: SINGLE_BLOG_QUERY,
       params: { slug },
     });
-    return data ?? [];
+    return data ?? null; // Sesuai tipe
   } catch (error) {
-    console.log("Error fetching all brands:", error);
-    return [];
+    console.error("Error fetching single blog:", error);
+    return null;
   }
 };
+
 const getBlogCategories = async () => {
   try {
     const { data } = await sanityFetch({
