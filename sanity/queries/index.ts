@@ -30,7 +30,7 @@ const getCategories = async (quantity?: number) => {
     });
     return data;
   } catch (error: any) {
-    console.error("Failed to fetch categories:", error); // tampilkan detail error
+    console.error("Failed to fetch categories:", error);
     throw new Error(`Failed to fetch categories: ${error.message}`);
   }
 };
