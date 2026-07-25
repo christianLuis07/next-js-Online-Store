@@ -31,6 +31,9 @@ import toast from "react-hot-toast";
 import { set } from "sanity";
 import React from "react";
 
+import PaymentModal from "@/components/PaymentModal";
+import { saveLocalOrder } from "@/lib/orderStorage";
+
 const CartPage = () => {
   const {
     deleteCartProduct,
@@ -41,6 +44,7 @@ const CartPage = () => {
   } = useStore();
   const [isClient, setIsClient] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const groupedItems = useStore((state) => state.getGroupedItems());
   const { isSignedIn } = useAuth();
   const { user } = useUser();
@@ -214,14 +218,15 @@ const CartPage = () => {
                           />
                         </div>
                         <Button
-                          className="w-full rounded-full font-semibold tracking-wide hoverEffect"
+                          onClick={() => setIsPaymentModalOpen(true)}
+                          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-semibold tracking-wide hoverEffect py-6 shadow-md"
                           size="lg"
                         >
-                          {loading ? "Loading..." : "Checkout"}
+                          Lanjut ke Pembayaran (QRIS / COD)
                         </Button>
                       </div>
                     </div>
-                    {addresses && (
+                    {addresses && addresses.length > 0 && (
                       <div className="bg-white rounded-md mt-5">
                         <Card>
                           <CardHeader>
@@ -267,12 +272,32 @@ const CartPage = () => {
                   </div>
                 </div>
                 {/* Order summary for mobile view */}
-                <div className="md:hidden fixed bottom-0 left-0 w-full bg-white pt-2">
-                  <div className="bg-white p-4 rounded-lg border mx-4">
-                    <h2>Ringkasan Pesanan</h2>
+                <div className="md:hidden fixed bottom-0 left-0 w-full bg-white p-4 border-t shadow-lg z-40 flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-gray-500">Total Tagihan</p>
+                    <PriceFormattor amount={getTotalPrice()} className="font-extrabold text-lg text-emerald-600" />
                   </div>
+                  <Button
+                    onClick={() => setIsPaymentModalOpen(true)}
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold px-6 py-3"
+                  >
+                    Bayar Sekarang
+                  </Button>
                 </div>
               </div>
+
+              {/* Interactive Payment Modal */}
+              <PaymentModal
+                isOpen={isPaymentModalOpen}
+                onClose={() => setIsPaymentModalOpen(false)}
+                items={groupedItems}
+                totalAmount={getTotalPrice()}
+                onPaymentSuccess={(method, details) => {
+                  saveLocalOrder(details);
+                  resetCart();
+                  toast.success(`Pesanan dengan ${method} berhasil dibuat!`);
+                }}
+              />
             </>
           ) : (
             <EmptyCart />

@@ -29,7 +29,7 @@ const BlogPage = async () => {
               <div className="bg-gray-100 p-5">
                 <div className="text-xs flex items-center gap-5">
                   <div className="flex items=center relative group cursor-pointer">
-                    {blog?.blogcategories?.map((item, index) => (
+                    {(blog as any)?.blogcategories?.map((item: any, index: number) => (
                       <p
                         key={index}
                         className="font-semibold text-shop_dark_green tracking-wider"

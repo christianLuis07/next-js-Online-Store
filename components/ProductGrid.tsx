@@ -10,6 +10,8 @@ import NoProductAvailable from "./NoProductAvailable";
 import ProductCard from "./ProductCard";
 import { Product } from "@/sanity.types";
 
+import { MOCK_PRODUCTS } from "@/sanity/queries/mockData";
+
 const ProductGrid = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
@@ -24,10 +26,19 @@ const ProductGrid = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await client.fetch(query, params);
-        setProducts(response);
+        const response = await (client.fetch as any)(query, params);
+        if (response && response.length > 0) {
+          setProducts(response);
+        } else {
+          const tabLower = selectedTab.toLowerCase();
+          const filtered = MOCK_PRODUCTS.filter(
+            (p) => p.variant?.toLowerCase() === tabLower
+          );
+          setProducts(filtered.length > 0 ? filtered : MOCK_PRODUCTS);
+        }
       } catch (error: any) {
-        throw new Error("Failed to fetch products", error);
+        console.error("Failed to fetch products:", error);
+        setProducts(MOCK_PRODUCTS);
       } finally {
         setLoading(false);
       }

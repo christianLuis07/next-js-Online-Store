@@ -11,14 +11,30 @@ import {
 import PriceFormattor from "./PriceFormattor";
 import { format } from "date-fns";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import OrderDetailDialog from "./OrderDetailDialog";
+import { getLocalOrders, LocalOrder } from "@/lib/orderStorage";
 
-const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
-  const [selectedOrder, setSelectedOrder] = useState<
-    MY_ORDERS_QUERYResult[number] | null
-  >(null);
+const OrdersComponent = ({ orders = [] }: { orders: MY_ORDERS_QUERYResult }) => {
+  const [allOrders, setAllOrders] = useState<any[]>(orders || []);
+  const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
+
+  useEffect(() => {
+    const local = getLocalOrders();
+    const formattedLocal = local.map((loc: LocalOrder) => ({
+      orderNumber: loc.orderNumber,
+      invoice: loc.invoice,
+      orderDate: loc.orderDate,
+      customerName: loc.customerName,
+      email: loc.email,
+      totalPrice: loc.totalPrice,
+      status: loc.status,
+      resiNumber: loc.resiNumber,
+    }));
+    setAllOrders([...formattedLocal, ...(orders || [])]);
+  }, [orders]);
+
   const handleDelete = () => {
     toast.error("Hapus Metode yang diaplikasikan dari Admin");
   };
@@ -26,8 +42,8 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
     <>
       <TableBody>
         <TooltipProvider>
-          {orders.map((order) => (
-            <Tooltip key={order?.orderNumber}>
+          {allOrders.map((order, idx) => (
+            <Tooltip key={order?.orderNumber || idx}>
               <TooltipTrigger asChild>
                 <TableRow
                   className="cursor-pointer hover:bg-gray-100 h-12"

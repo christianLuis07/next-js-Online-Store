@@ -42,7 +42,7 @@ const SingleBlogPage = async ({
           <div>
             <div className="text-xs flex items-center gap-5 my-7">
               <div className="flex items-center relative group cursor-pointer">
-                {blog?.blogcategories?.map(
+                {(blog as any)?.blogcategories?.map(
                   (
                     item: { title: string | null; slug: string | null },
                     index: number
@@ -205,12 +205,12 @@ const BlogLeft = async ({ slug }: { slug: string }) => {
       <div className="border border-lightColor p-5 rounded-md">
         <Title className="text-base">Blog Categories</Title>
         <div className="space-y-2 mt-2">
-          {categories?.map(({ blogcategories }, index) => (
+          {categories?.map((catItem: any, index: number) => (
             <div
               key={index}
               className="text-lightColor flex items-center justify-between text-sm font-medium"
             >
-              <p>{blogcategories && blogcategories[0]?.title}</p>
+              <p>{catItem?.name || catItem?.blogcategories?.[0]?.title || "Umum"}</p>
               <p className="text-darkColor font-semibold">{`(1)`}</p>
             </div>
           ))}
