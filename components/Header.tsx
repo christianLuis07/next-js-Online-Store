@@ -14,11 +14,19 @@ import { Logs } from "lucide-react";
 import { getMyOrders } from "@/sanity/queries";
 
 const Header = async () => {
-  const user = await currentUser();
-  const { userId } = await auth();
+  let user = null;
+  let userId: string | null = null;
   let orders = null;
-  if (userId) {
-    orders = await getMyOrders(userId);
+
+  try {
+    user = await currentUser();
+    const authData = await auth();
+    userId = authData?.userId || null;
+    if (userId) {
+      orders = await getMyOrders(userId);
+    }
+  } catch (error) {
+    console.warn("Clerk Auth initialization skipped or failed:", error);
   }
 
   return (
