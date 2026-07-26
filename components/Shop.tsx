@@ -11,6 +11,7 @@ import { client } from "@/sanity/lib/client";
 import { Loader2 } from "lucide-react";
 import NoProductAvailable from "./NoProductAvailable";
 import ProductCard from "./ProductCard";
+import { MOCK_PRODUCTS } from "@/sanity/queries/mockData";
 
 interface Props {
   categories: Category[];
@@ -55,9 +56,14 @@ const Shop = ({ categories, brands }: Props) => {
         { selectedCategory, selectedBrand, minPrice, maxPrice },
         { next: { revalidate: 0 } }
       );
-      setProducts(data);
+      if (data && data.length > 0) {
+        setProducts(data);
+      } else {
+        setProducts(MOCK_PRODUCTS as any);
+      }
     } catch (error) {
       console.log("Shop product fetching Error", error);
+      setProducts(MOCK_PRODUCTS as any);
     } finally {
       setLoading(false);
     }
