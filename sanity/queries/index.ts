@@ -36,8 +36,7 @@ const getCategories = async (quantity?: number) => {
     });
     if (data && data.length > 0) return data;
     return quantity ? MOCK_CATEGORIES.slice(0, quantity) : MOCK_CATEGORIES;
-  } catch (error: any) {
-    console.error("Failed to fetch categories:", error);
+  } catch {
     return quantity ? MOCK_CATEGORIES.slice(0, quantity) : MOCK_CATEGORIES;
   }
 };
@@ -47,8 +46,7 @@ const getAllBrands = async () => {
     const { data } = await sanityFetch({ query: BRANDS_QUERY });
     if (data && data.length > 0) return data;
     return MOCK_BRANDS;
-  } catch (error: any) {
-    console.error("Failed to fetch brands:", error);
+  } catch {
     return MOCK_BRANDS;
   }
 };
@@ -58,8 +56,7 @@ const getLatestBlogs = async () => {
     const { data } = await sanityFetch({ query: LATEST_BLOG_QUERY });
     if (data && data.length > 0) return data;
     return MOCK_BLOGS;
-  } catch (error: any) {
-    console.error("Failed to fetch latest blog:", error);
+  } catch {
     return MOCK_BLOGS;
   }
 };
@@ -69,8 +66,7 @@ const getDealProducts = async () => {
     const { data } = await sanityFetch({ query: DEAL_PRODUCTS });
     if (data && data.length > 0) return data;
     return MOCK_PRODUCTS;
-  } catch (error: any) {
-    console.error("Failed to fetch deal products:", error);
+  } catch {
     return MOCK_PRODUCTS;
   }
 };
@@ -83,8 +79,7 @@ const getProductBySlug = async (slug: string) => {
     });
     if (product?.data) return product.data;
     return MOCK_PRODUCTS.find((p) => p.slug.current === slug) || MOCK_PRODUCTS[0];
-  } catch (error: any) {
-    console.error("Failed to fetch product by slug:", error);
+  } catch {
     return MOCK_PRODUCTS.find((p) => p.slug.current === slug) || MOCK_PRODUCTS[0];
   }
 };
@@ -99,8 +94,7 @@ const getBrand = async (slug: string) => {
     });
     if (product?.data) return product.data;
     return MOCK_BRANDS.find((b) => b.slug.current === slug) || MOCK_BRANDS[0];
-  } catch (error: any) {
-    console.error("Failed to fetch brand:", error);
+  } catch {
     return MOCK_BRANDS.find((b) => b.slug.current === slug) || MOCK_BRANDS[0];
   }
 };
@@ -112,8 +106,7 @@ const getMyOrders = async (userId: string) => {
       params: { userId },
     });
     return orders?.data || [];
-  } catch (error) {
-    console.error("Error fetching product by ID:", error);
+  } catch {
     return [];
   }
 };
@@ -126,8 +119,7 @@ const getAllBlogs = async (quantity: number) => {
     });
     if (data && data.length > 0) return data;
     return MOCK_BLOGS;
-  } catch (error) {
-    console.log("Error fetching all blogs:", error);
+  } catch {
     return MOCK_BLOGS;
   }
 };
@@ -142,8 +134,7 @@ const getSingleBlog = async (
     });
     if (data) return data;
     return (MOCK_BLOGS.find((b) => b.slug.current === slug) as any) || (MOCK_BLOGS[0] as any);
-  } catch (error) {
-    console.error("Error fetching single blog:", error);
+  } catch {
     return (MOCK_BLOGS[0] as any);
   }
 };
@@ -155,8 +146,7 @@ const getBlogCategories = async () => {
     });
     if (data && data.length > 0) return data;
     return [{ name: "Teknologi", slug: { current: "teknologi" } }, { name: "Gadget", slug: { current: "gadget" } }];
-  } catch (error) {
-    console.log("Error fetching blog categories:", error);
+  } catch {
     return [{ name: "Teknologi", slug: { current: "teknologi" } }, { name: "Gadget", slug: { current: "gadget" } }];
   }
 };
@@ -169,8 +159,7 @@ const getOthersBlog = async (slug: string, quantity: number) => {
     });
     if (data && data.length > 0) return data;
     return MOCK_BLOGS.filter((b) => b.slug.current !== slug);
-  } catch (error) {
-    console.log("Error fetching others blog:", error);
+  } catch {
     return MOCK_BLOGS;
   }
 };

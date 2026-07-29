@@ -24,8 +24,7 @@ export const getLocalOrders = (): LocalOrder[] => {
   try {
     const data = localStorage.getItem(ORDERS_KEY);
     return data ? JSON.parse(data) : [];
-  } catch (error) {
-    console.error("Error reading local orders:", error);
+  } catch {
     return [];
   }
 };

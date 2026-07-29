@@ -66,7 +66,7 @@ export const MOCK_PRODUCTS: any[] = [
     variant: "laptop",
     description: "MacBook Pro dengan chip Apple M3 Max termutakhir. Layar Liquid Retina XDR 16 inci dengan daya tahan baterai hingga 22 jam.",
     intro: "Performa monster untuk kreator dan pengembang profesional.",
-    images: [{ _type: "image", _key: "img1", asset: { _ref: "image-12345", _type: "reference" } }],
+    images: ["https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80"],
     categories: [{ _id: "cat_laptops", name: "Laptop & Komputer", slug: { current: "laptops" } }],
   },
   {
@@ -84,7 +84,7 @@ export const MOCK_PRODUCTS: any[] = [
     variant: "mobile",
     description: "iPhone 16 Pro Max dibekali chip A18 Pro, desain titanium tahan lama, tombol Camera Control, dan kemampuan merekam 4K 120 fps Dolby Vision.",
     intro: "Smartphone tercanggih Apple dengan kecerdasan buatan Apple Intelligence.",
-    images: [{ _type: "image", _key: "img2", asset: { _ref: "image-12346", _type: "reference" } }],
+    images: ["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80"],
     categories: [{ _id: "cat_mobiles", name: "Smartphone & Gadget", slug: { current: "mobiles" } }],
   },
 ];

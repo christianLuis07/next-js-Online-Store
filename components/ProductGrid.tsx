@@ -37,7 +37,6 @@ const ProductGrid = () => {
           setProducts(filtered.length > 0 ? filtered : MOCK_PRODUCTS);
         }
       } catch (error: any) {
-        console.error("Failed to fetch products:", error);
         setProducts(MOCK_PRODUCTS);
       } finally {
         setLoading(false);

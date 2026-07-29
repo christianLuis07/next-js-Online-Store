@@ -25,8 +25,8 @@ const Header = async () => {
     if (userId) {
       orders = await getMyOrders(userId);
     }
-  } catch (error) {
-    console.warn("Clerk Auth initialization skipped or failed:", error);
+  } catch {
+    // Auth fallback
   }
 
   return (

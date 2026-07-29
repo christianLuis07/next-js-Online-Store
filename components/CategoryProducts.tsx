@@ -36,8 +36,7 @@ const CategoryProducts = ({ categories, slug }: Props) => {
       const data = await client.fetch(query, { categorySlug: currentSlug });
       setProducts(data);
     } catch (error: any) {
-      console.error("Failed to fetch products:", error);
-      throw new Error(`Failed to fetch products: ${error.message}`);
+      setProducts([]);
     } finally {
       setLoading(false);
     }

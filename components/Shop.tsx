@@ -62,7 +62,6 @@ const Shop = ({ categories, brands }: Props) => {
         setProducts(MOCK_PRODUCTS as any);
       }
     } catch (error) {
-      console.log("Shop product fetching Error", error);
       setProducts(MOCK_PRODUCTS as any);
     } finally {
       setLoading(false);
